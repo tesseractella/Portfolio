@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width-device-width, inital-scale=1.0">
+    <title>Particles</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+    
+    <script type="text/javascript">
+       let options = {
+        fpsLimit: 60,
+        interactivity:{
+
+        },
+        particles: {
+            color: { value: "#5DADE2"},
+            shape: { type: "circle"},
+            links: {
+                enable: true,
+                opacity: 0.7,
+                distance: {min:50, max:200},
+                color: "#5DADE2",
+            },
+            move: {
+                enable: true,
+                speed: {min:0.5, max:.8},
+            },
+            opacity: {
+                value: {min:0.3, max:1},
+            },
+            size: {
+                value: {min:1, max:3},
+            },
+           },
+        detectRetina: true
+       }
+
+
+    tsParticles.load("tsparticles", options);
+    </script>
+ 
+</body>

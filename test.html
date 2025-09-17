@@ -3,27 +3,58 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width-device-width, inital-scale=1.0">
     <title>Particles</title>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.6/tsparticles.bundle.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js"></script> -->
+
+    <style>
+        body{
+            background-color: black;
+        }
+        
+    </style>
+
 </head>
 <body>
 
     <div id="tsparticles"></div>
+
     
-    <script type="text/javascript">
+    <script>
        let options = {
+        background: {
+                color: "#000"
+            },
         fpsLimit: 60,
         interactivity:{
+            events: {
+            onClick: {
+                enable: true,
+                mode: "push",
+            },
+            onHover: {
+                enable: true,
+                mode: "repulse",
+            },
 
         },
+    },
+    modes: {
+        push: {
+            quantity: 6,
+        },
+        repulse: {
+            distance: .5,
+        },
+    },
         particles: {
-            color: { value: "#5DADE2"},
+            
+            color: { value: "#18F2EE"},
             shape: { type: "circle"},
             links: {
                 enable: true,
-                opacity: 0.7,
-                distance: {min:50, max:200},
-                color: "#5DADE2",
+                opacity: 0.3,
+                distance: 100
             },
             move: {
                 enable: true,

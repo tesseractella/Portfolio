@@ -23,8 +23,9 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js" defer></script>
-     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.6/tsparticles.bundle.min.js"></script>
+     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script> -->
    
      
     <!--maybe add google tag manager-->
@@ -689,7 +690,7 @@
             <img src="icons/profile.png" alt="Profile picture of Tess Flinchbaugh">
             <h1>Tess Flinchbaugh</h1>
             <span id="typed" class="typed-text"></span>
-            <p>I develop data pipelines and analytical solutions that transform complex biological and operational datasets into actionable insights. Skilled in Python, SQL, R, and cloud-based tools, I deliver reproducible workflows that support decision-making in clinical research, computational biology, and data-driven business strategy.”</p>
+            <p>I develop data pipelines and analytical solutions that transform complex biological and operational datasets into actionable insights. Skilled in Python, SQL, R, and cloud-based tools, I deliver reproducible workflows that support decision-making in clinical research, computational biology, and data-driven business strategy.</p>
             <div class="contact-buttons" id="contact">
               <div class="button-row">
                 <a href="mailto:tkflinch@gmail.com" class="btn-icon">
@@ -881,7 +882,7 @@
     });
       
     </script>
-
+<!--
      <script type="text/javascript">
         const options = {
          fpsLimit: 60,
@@ -910,9 +911,67 @@
             },
          detectRetina: true
         }
+
+//         (async () => {
+//   await loadFull(tsParticles);
+
+//   await tsParticles.load({
+//     id: "tsparticles",
+//     options
+//   });
+// })();
  
      tsParticles.load("tsparticles", options);
-     </script>
+     </script> -->
+    <script>
+    let options = {
+        fpsLimit: 60,
+        interactivity:{
+            events: {
+            onClick: {
+                enable: true,
+                mode: "push",
+            },
+            onHover: {
+                enable: false,
+                mode: "repulse",
+            },
+
+        },
+    },
+    modes: {
+        push: {
+            quantity: 3,
+        },
+        repulse: {
+            distance: .005,
+        },
+    },
+        particles: {
+            color: { value: "#0880BD"},
+            shape: { type: "circle"},
+            links: {
+                enable: true,
+                opacity: 0.3,
+                distance: 100
+            },
+            move: {
+                enable: true,
+                speed: {min:0.2, max:.5},
+            },
+            opacity: {
+                value: {min:0.3, max:.6},
+            },
+            size: {
+                value: {min:.5, max:4},
+            },
+           },
+        detectRetina: true
+       }
+
+       tsParticles.load("tsparticles", options);
+
+       </script>
 
 
 </body>

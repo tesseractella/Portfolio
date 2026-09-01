@@ -674,6 +674,7 @@
               <div class="portfolio-menu" id="portfolio-menu" role="menu">
                 <a href="#work" role="menuitem">Work Experience</a>
                 <a href="#projects" role="menuitem">Projects</a>
+                <a href="#reading" role="menuitem">Currently Reading</a>
                 <a href="#education" role="menuitem">Education</a>
               </div>
               </div>
@@ -715,6 +716,16 @@
             <h1>Work Experience</h1>
             <div class="section-container">
             <div class="card work-block">
+                    <h3>Business Analyst and Admin Assistant</h3>
+                    <p class="place">Oshman Family JCC (Oct 2025 – Present)</p>
+                    <ul>
+                      <li>Analyzed student enrollment and regional demographic data to inform operational decisions, improving registration, retention, and conversion rates across internal programs.</li>
+                      <li>Consolidated fragmented data sources into a unified Excel data model, reducing inconsistencies and streamlining analytics.</li>
+                      <li>Conducted competitive analysis across similar organizations, identifying areas for growth to strengthen competitive positioning.</li>
+                      <li>Built custom tools and resources for administrators, automating administrative workflows to improve operational efficiency.</li>
+                    </ul>
+                  </div>
+            <div class="card work-block">
                 <h3>Assistant A/V Coordinator</h3>
                 <p class="place">UCLA Digital and Technological Solutions (Apr 2024 – Jun 2025)</p>
                 <ul>
@@ -725,7 +736,7 @@
                 </div>
                 <div class="card work-block">
                     <h3>Data Analysis and Product Development Intern</h3>
-                    <p class="place">Visseiro Gmbh (Jun2023 – Aug 2023)</p>
+                    <p class="place">Visseiro Gmbh (Jun 2023 – Aug 2023)</p>
                     <ul>
                       <li>Designed and executed reference-sleep study, analyzed data with Python to identify physiological patterns during sleep.</li>
                       <li>Performed app testing on the Mako sensor assistance system for enhancing empathic care in stationary care facilities to ensure seamless integration of the mobile app with sensors.</li>
@@ -733,14 +744,36 @@
                     </ul>
                   </div>
               <div class="card work-block">
-                <h3>Undergraduate Researcher – Neurophysics, Data Pipeline Developmen</h3>
-                <p class="place">Professor Arisaka’s Lab, University of California, Los Angeles (Jan 2023 – October 2023)</p>
+                <h3>Undergraduate Researcher – Neurophysics, Data Pipeline Development</h3>
+                <p class="place">Professor Arisaka’s Lab, University of California, Los Angeles (Jan 2023 – Oct 2023)</p>
                 <ul>
                   <li>Built experimental set up and data collection framework to collect movement data from Drosophila melangoster</li>
                   <li>Programmed automatic stimulus displays with microcontroller in C++</li>
                   <li>Wrote analysis programs in LabVIEW, linking with C++ systems for instant communication and analysis of insect behavior</li>
                 </ul>
               </div>
+            </div>
+          </section>
+
+          <section class="section" id="researchinterests">
+            <h1>Research Interests</h1>
+            <div class = "projects-container">
+              <a class="card project-card">
+                <h3>Biosignal Processing</h3>
+                <p>why this is interesting</p>
+              </a>
+            </div>
+            <div class = "projects-container">
+              <a class="card project-card">
+                <h3>Multi-omics Pipelines</h3>
+                <p>why this is interesting</p>
+              </a>
+            </div>
+            <div class = "projects-container">
+              <a class="card project-card">
+                <h3>Healthcare Analytics</h3>
+                <p>why this is interesting</p>
+              </a>
             </div>
           </section>
 
@@ -783,8 +816,27 @@
                 <p>Built bioreactor for long term protein production with automated controls to maintain stable environment conditions. Controlled probes with Arduino, determining conditions such as pH and protein density, and adjusting pumps to keep stable environment.</p>
                 <div class="tools">C++ · Arduino · Bacterial protein expression · Process optimization</div>
               </a>
+              <a class="card project-card" href="https://github.com/tesseractella/MandelbrotAndBifurcation" target="_blank">
+                <h3>Rendering fractals</h3>
+                <p> Rendering different fractals and a dive into their mathematical bases. Mandlebrot set and association with bifurcation plot. Sierpinski triangle. Cantor fractal.</p>
+                <div class="tools">Python · Data Analysis · Numerical Analysis · Polynomial Interpolation · LaTeX</div>
+                <img class="gh-icon" src="icons/github.png" alt="GitHub">
+              </a>
             </div>
           </section>
+
+          <section class="section" id="reading">
+            <h1>Currently Reading</h1>
+           <div class="section-container">
+            <a class="card project-card" href="https://www.nature.com/articles/s43588-026-01026-5" target="_blank" rel="noopener">
+                <h3>Longitudinal Alignments and Syntheses of Multimodal Clinical Data with the PULSE Framework</h3>
+               <p class="place">Wu, Li & Zhang · Nature Computational Science · Aug 26, 2026</p>
+               <p>Most patients only get a handful of the clinical measurements needed to see the full picture of their health. PULSE uses a patient's own longitudinal EHR history to reconstruct missing lab values and cross-modal data, aiming to make precision medicine more cost-effective across care settings — a nice example of imputation/representation-learning ideas applied directly to clinical decision support.</p>
+           <div class="tools">Healthcare Analytics · Machine Learning · Clinical Informatics</div>
+            </a>
+          </div>
+
+  </section>
 
           <section class="section" id="education">
             <h1>Education</h1>
@@ -808,7 +860,8 @@
         </div>
     </section>
 
-    <!-- <section class="section" id="contact">
+    <!-- Maybe add contact for later, styling already set
+    <section class="section" id="contact">
         <h1>Contact Me!</h1>
         <form id="contact-form">
             <input type="text" name="name" >
@@ -882,47 +935,7 @@
     });
       
     </script>
-<!--
-     <script type="text/javascript">
-        const options = {
-         fpsLimit: 60,
-         interactivity:{
- 
-         },
-         particles: {
-             color: { value: "#5DADE2"},
-             shape: { type: "circle"},
-             links: {
-                 enable: true,
-                 opacity: 0.7,
-                 distance: {min:50, max:200},
-                 color: "#5DADE2",
-             },
-             move: {
-                 enable: true,
-                 speed: {min:0.5, max:.8},
-             },
-             opacity: {
-                 value: {min:0.3, max:1},
-             },
-             size: {
-                 value: {min:1, max:3},
-             },
-            },
-         detectRetina: true
-        }
 
-//         (async () => {
-//   await loadFull(tsParticles);
-
-//   await tsParticles.load({
-//     id: "tsparticles",
-//     options
-//   });
-// })();
- 
-     tsParticles.load("tsparticles", options);
-     </script> -->
     <script>
     let options = {
         fpsLimit: 60,
@@ -937,8 +950,8 @@
                 mode: "repulse",
             },
 
+          },
         },
-    },
     modes: {
         push: {
             quantity: 3,
@@ -947,32 +960,34 @@
             distance: .005,
         },
     },
-        particles: {
-            color: { value: "#0880BD"},
-            shape: { type: "circle"},
-            links: {
-                enable: true,
-                opacity: 0.3,
-                distance: 100,
-                color: "#ABBBD6",
-            },
-            move: {
-                enable: true,
-                speed: {min:0.2, max:.5},
-            },
-            opacity: {
-                value: {min:0.3, max:.6},
-            },
-            size: {
-                value: {min:.5, max:4},
-            },
-           },
+    particles: {
+        color: { value: "#0880BD"},
+        shape: { type: "circle"},
+        links: {
+            enable: true,
+            opacity: 0.3,
+            distance: 100,
+            color: "#ABBBD6",
+        },
+        move: {
+            enable: true,
+            speed: {min:0.2, max:.5},
+        },
+        opacity: {
+            value: {min:0.3, max:.6},
+        },
+        size: {
+            value: {min:.5, max:4},
+        },
+      },
         detectRetina: true
-       }
+    }
 
        tsParticles.load("tsparticles", options);
 
        </script>
+
+
 
 
 </body>

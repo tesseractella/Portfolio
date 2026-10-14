@@ -658,6 +658,133 @@
                 bottom: calc(100% + 12px);
               }
             }
+
+            /* Live PDB Tracker */
+  #live-data .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    background: rgba(93, 173, 226, 0.12);
+    border: 1px solid rgba(93, 173, 226, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin: 0 auto 1rem;
+  }
+ 
+  #live-data .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 0 rgba(46, 204, 113, 0.6);
+    animation: live-pulse 2s infinite;
+  }
+ 
+  @keyframes live-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(46, 204, 113, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+  }
+ 
+  #live-data .live-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+  }
+ 
+  #live-data .live-stat-card {
+    background: var(--card-bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 1.4rem 2rem;
+    min-width: 200px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+  }
+ 
+  #live-data .live-stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+  }
+ 
+  #live-data .live-stat-label {
+    font-size: 0.85rem;
+    color: var(--subtext-light);
+    margin-top: 0.4rem;
+    font-weight: 600;
+  }
+ 
+  #live-data .live-updated {
+    font-size: 0.8rem;
+    color: var(--subtext-light);
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+  }
+ 
+  #live-data .live-refresh-btn {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.8rem;
+    padding: 0;
+  }
+ 
+  #live-data .entry-place {
+    color: var(--subtext-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+ 
+  #live-data .entry-id-pill {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(93, 173, 226, 0.15);
+    color: var(--secondary-color);
+    padding: 0.15rem 0.55rem;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+  }
+ 
+  #live-data .live-loading,
+  #live-data .live-error {
+    color: var(--subtext-light);
+    font-size: 0.95rem;
+    padding: 2rem;
+  }
+ 
+  #live-data .live-error {
+    color: #c0392b;
+  }
+ 
+  /* Dark mode */
+  html.dark #live-data .live-stat-card {
+    background: var(--card-bg-dark);
+    border-color: var(--border-dark);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+  }
+  html.dark #live-data .live-stat-number { color: var(--accent-color); }
+  html.dark #live-data .live-stat-label,
+  html.dark #live-data .live-updated,
+  html.dark #live-data .entry-place { color: var(--subtext-dark); }
+  html.dark #live-data .entry-id-pill {
+    background: rgba(93, 173, 226, 0.2);
+    color: #aad3ff;
+  }
           </style>  
 </head>
 
@@ -717,8 +844,15 @@
             <h1>Work Experience</h1>
             <div class="section-container">
             <div class="card work-block">
+                    <h3>Research Data Analyst Associate</h3>
+                    <p class="place">Northwestern Feinberg School of Medicine (Oct 2026 - Present)</p>
+                    <ul>
+                      <li>Supporting biomedical research</li>
+                    </ul>
+                  </div>
+            <div class="card work-block">
                     <h3>Business Analyst and Admin Assistant</h3>
-                    <p class="place">Oshman Family JCC (Oct 2025 – Present)</p>
+                    <p class="place">Oshman Family JCC (Oct 2025 – Oct 2026)</p>
                     <ul>
                       <li>Analyzed student enrollment and regional demographic data to inform operational decisions, improving registration, retention, and conversion rates across internal programs.</li>
                       <li>Consolidated fragmented data sources into a unified Excel data model, reducing inconsistencies and streamlining analytics.</li>
@@ -867,7 +1001,19 @@
                     </div>
                   </div>
         </div>
-    </section>
+        </section>
+
+        <section class="section" id="live-data">
+  <h1>Live Bioinformatics Data</h1>
+  <div class="live-badge"><span class="live-dot"></span> Live from RCSB Protein Data Bank</div>
+ 
+  <div id="live-stats" class="live-stat-row">
+    <div class="live-loading">Loading live structure counts…</div>
+  </div>
+  <p id="live-updated" class="live-updated"></p>
+ 
+  <div id="live-entries" class="projects-container"></div>
+</section>
 
     <!-- Maybe add contact for later, styling already set
     <section class="section" id="contact">
@@ -995,6 +1141,221 @@
        tsParticles.load("tsparticles", options);
 
        </script>
+
+<script>
+(function () {
+  const SEARCH_URL = "https://search.rcsb.org/rcsbsearch/v2/query";
+  const GRAPHQL_URL = "https://data.rcsb.org/graphql";
+  const REFRESH_MS = 5 * 60 * 1000;   // auto-refresh every 5 minutes
+  const ENTRY_COUNT = 6;              // how many recent entries to show
+  const CACHE_KEY = "live-pdb-cache-v1";
+  const CACHE_TTL_MS = 3 * 60 * 1000; // reuse a response for 3 minutes (survives page reloads)
+ 
+  const statsEl = document.getElementById("live-stats");
+  const entriesEl = document.getElementById("live-entries");
+  const updatedEl = document.getElementById("live-updated");
+ 
+  // --- Search API: GET with a URL-encoded json param -----------------
+  // GET avoids the CORS preflight (OPTIONS) request that a POST with a
+  // JSON content-type header triggers. Fewer moving parts = fewer failures.
+  function searchGet(query) {
+    const url = SEARCH_URL + "?json=" + encodeURIComponent(JSON.stringify(query));
+    return fetch(url, { method: "GET" });
+  }
+ 
+  // One combined query: the main query already scopes to "last 7 days" and
+  // returns total_count for that (= week count) plus the newest N entries.
+  // A date_range facet on the same field gives the last-24h count for free,
+  // so this single request replaces what used to be two separate calls.
+  function combinedQuery() {
+    const weekAgo = new Date();
+    weekAgo.setUTCDate(weekAgo.getUTCDate() - 7);
+    return {
+      query: {
+        type: "terminal",
+        service: "text",
+        parameters: {
+          attribute: "rcsb_accession_info.initial_release_date",
+          operator: "greater_or_equal",
+          value: weekAgo.toISOString().split("T")[0]
+        }
+      },
+      return_type: "entry",
+      request_options: {
+        results_content_type: ["experimental"],
+        sort: [{ sort_by: "rcsb_accession_info.initial_release_date", direction: "desc" }],
+        paginate: { start: 0, rows: ENTRY_COUNT },
+        facets: [{
+          name: "released_last_24h",
+          aggregation_type: "date_range",
+          attribute: "rcsb_accession_info.initial_release_date",
+          ranges: [{ from: "now-1d" }]
+        }]
+      }
+    };
+  }
+ 
+  async function fetchSearchData() {
+    const res = await searchGet(combinedQuery());
+    if (!res.ok) throw new Error("Search API returned " + res.status);
+    const data = await res.json();
+    const bucket = (data.facets && data.facets[0] && data.facets[0].buckets && data.facets[0].buckets[0]) || {};
+    return {
+      weekCount: data.total_count || 0,
+      dayCount: bucket.population || 0,
+      ids: (data.result_set || []).map(r => r.identifier)
+    };
+  }
+ 
+  // Details (title/organism/method) are a "nice to have" — if this call
+  // fails, we still render the stats and plain ID list rather than erroring.
+  async function fetchEntryDetails(ids) {
+    if (!ids.length) return [];
+    const gqlQuery = `
+      query Entries($ids: [String!]!) {
+        entries(entry_ids: $ids) {
+          rcsb_id
+          struct { title }
+          rcsb_accession_info { initial_release_date }
+          rcsb_entry_info { experimental_method }
+          polymer_entities {
+            rcsb_entity_source_organism { ncbi_scientific_name }
+          }
+        }
+      }`;
+    const res = await fetch(GRAPHQL_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: gqlQuery, variables: { ids } })
+    });
+    if (!res.ok) throw new Error("Data API returned " + res.status);
+    const data = await res.json();
+    return (data.data && data.data.entries) ? data.data.entries : [];
+  }
+ 
+  function readCache() {
+    try {
+      const raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (Date.now() - parsed.savedAt > CACHE_TTL_MS) return null;
+      return parsed.payload;
+    } catch (e) { return null; }
+  }
+ 
+  function writeCache(payload) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), payload }));
+    } catch (e) { /* ignore quota/private-mode errors */ }
+  }
+ 
+  function organismOf(entry) {
+    const pe = entry.polymer_entities || [];
+    for (const p of pe) {
+      const orgs = p.rcsb_entity_source_organism;
+      if (orgs && orgs.length && orgs[0].ncbi_scientific_name) {
+        return orgs[0].ncbi_scientific_name;
+      }
+    }
+    return "Organism not specified";
+  }
+ 
+  function renderStats(counts) {
+    statsEl.innerHTML = `
+      <div class="live-stat-card">
+        <div class="live-stat-number">${counts.dayCount.toLocaleString()}</div>
+        <div class="live-stat-label">New structures — last 24 hours</div>
+      </div>
+      <div class="live-stat-card">
+        <div class="live-stat-number">${counts.weekCount.toLocaleString()}</div>
+        <div class="live-stat-label">New structures — last 7 days</div>
+      </div>
+    `;
+  }
+ 
+  // Fallback card (no title/organism) used only if the GraphQL detail
+  // call fails — keeps the widget useful instead of showing nothing.
+  function renderEntriesFromIdsOnly(ids) {
+    entriesEl.innerHTML = ids.map(id => `
+      <a class="card project-card-static" href="https://www.rcsb.org/structure/${id}" target="_blank" rel="noopener">
+        <h3><span class="entry-id-pill">${id}</span></h3>
+        <p class="entry-place">Details unavailable right now — click through to view on RCSB</p>
+      </a>
+    `).join("");
+  }
+ 
+  function renderEntries(entries) {
+    if (!entries.length) {
+      entriesEl.innerHTML = `<p class="live-loading">No recent releases found.</p>`;
+      return;
+    }
+    entriesEl.innerHTML = entries.map(e => {
+      const title = (e.struct && e.struct.title) || "Untitled structure";
+      const method = (e.rcsb_entry_info && e.rcsb_entry_info.experimental_method) || "—";
+      const released = (e.rcsb_accession_info && e.rcsb_accession_info.initial_release_date)
+        ? new Date(e.rcsb_accession_info.initial_release_date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
+        : "—";
+      const organism = organismOf(e);
+      return `
+        <a class="card project-card-static" href="https://www.rcsb.org/structure/${e.rcsb_id}" target="_blank" rel="noopener">
+          <h3><span class="entry-id-pill">${e.rcsb_id}</span>${title}</h3>
+          <p class="entry-place">${organism} · Released ${released}</p>
+          <div class="tools">Method: ${method}</div>
+        </a>
+      `;
+    }).join("");
+  }
+ 
+  function renderUpdatedLine(fromCache) {
+    const label = fromCache ? "Loaded from cache" : "Last updated";
+    updatedEl.innerHTML = `${label} ${new Date().toLocaleTimeString()} ·
+      <button class="live-refresh-btn" onclick="window.__refreshLivePDB && window.__refreshLivePDB(true)">Refresh now</button>`;
+  }
+ 
+  async function refresh(forceFresh) {
+    // Serve from sessionStorage first — this both speeds up repeat visits
+    // and cuts down on how often the browser talks to RCSB at all.
+    if (!forceFresh) {
+      const cached = readCache();
+      if (cached) {
+        renderStats({ weekCount: cached.weekCount, dayCount: cached.dayCount });
+        renderEntries(cached.entries || []);
+        renderUpdatedLine(true);
+        return;
+      }
+    }
+ 
+    let searchData;
+    try {
+      searchData = await fetchSearchData();
+    } catch (err) {
+      statsEl.innerHTML = `<p class="live-error">Couldn't reach the RCSB Search API right now (${err.message}). Try refreshing in a moment.</p>`;
+      entriesEl.innerHTML = "";
+      updatedEl.innerHTML = `<button class="live-refresh-btn" onclick="window.__refreshLivePDB && window.__refreshLivePDB(true)">Try again</button>`;
+      return;
+    }
+ 
+    renderStats(searchData);
+ 
+    // Detail lookup is best-effort — degrade to ID-only cards on failure
+    // rather than showing an error for the whole widget.
+    let entries = [];
+    try {
+      entries = await fetchEntryDetails(searchData.ids);
+      renderEntries(entries);
+    } catch (err) {
+      renderEntriesFromIdsOnly(searchData.ids);
+    }
+ 
+    writeCache({ weekCount: searchData.weekCount, dayCount: searchData.dayCount, entries });
+    renderUpdatedLine(false);
+  }
+ 
+  window.__refreshLivePDB = refresh;
+  refresh(false);
+  setInterval(() => refresh(false), REFRESH_MS);
+})();
+</script>
 
 
 
